@@ -2,7 +2,9 @@
 
 ## The problem
 Many software companies build technology by employing multiple teams to tackle numerous problems at once. This is true of Trainline. We have Web, Mobile, Data Science, Database, and Backend teams - each with their own projects that enable Trainline to provide value to our customers.
+
 When these teams interact with each other it can be helpful to employ some tracer rounds to diagnose problems as requests make their way through multiple, disparate systems. Within Trainline we call these tracer rounds "Conversation IDs". These IDs have some information baked into them based on the client that sends them.
+
 In the iOS team we noticed that - frequently - when doing release testing, we would come across bugs or issues when interacting with back end services that we didn't know how to diagnose without some help from another team. This conversation id is critical to diagnosing the issue in a timely fashion, and without it, you are making the process tedious and frustrating for the person helping you. If you don't have it the ability to debug your issue becomes more difficult.
 
 ## Proxies
@@ -130,13 +132,17 @@ groups). This enables multiple processes on iOS to communicate with shared conta
 Here is an example of a list of logs in the Configurator app;
 
 ![List of network logs](fig3.png "List of network logs")
+
 And here is what the detail view looks like;
+
 ![Detailed view of a network log](fig4.png "Detailed view of a network log")
+
 We plan to make the detail view nicer in the future, as well as adding a search bar so you can quickly look through the JSON.
 
 Here you can see where the value in network logger comes in when diagnosing errors. In our list we have a 403 error. You can open this log and see why that request failed, rather than having to hook up a debugger.
 
 This comes in very handy every week when we test our new release on physical devices, which are significantly more difficult to connect to a proxy than a simulator is.
+
 ![List of network logs with error](fig5.png "List of network logs with an error")
 
 ## Feedback
